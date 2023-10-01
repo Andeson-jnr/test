@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Page</title>
+</head>
+<body>
+    <h1>Login Page</h1>
+    <form id="loginForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+        <input type="submit" value="Login">
+    </form>
+    <p id="message"></p>
+
+    <script>
+        // Initialize login attempts counter
+        let loginAttempts = 0;
+
+        // Function to handle form submission
+        document.getElementById("loginForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+            
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            // Replace this with your authentication logic (e.g., checking against a database)
+            const correctPassword = "oooooooo"; // Replace with the correct password
+
+            if (password === correctPassword) {
+                alert("Login successful!");
+                // Redirect to the user's dashboard or another page
+                // window.location.href = "dashboard.html";
+            } else {
+                loginAttempts++;
+                document.getElementById("message").textContent = "Incorrect password. Attempts left: " + (3 - loginAttempts);
+
+                if (loginAttempts === 3) {
+                    alert("You have exceeded the maximum login attempts. Please reset your password.");
+                    // Redirect to the password reset page
+                    // window.location.href = "reset_password.html";
+                }
+            }
+        });
+    </script>
+</body>
+</html>
